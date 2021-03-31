@@ -1,8 +1,8 @@
 {
   "name": "strygwyr",
-  "version": "0.0.6",
-  "description": "This module can smell quickly and easy retrieving Dota 2 object wrapper.",
-  "main": "index.js",
+  "version": "0.0.16",
+  "description": "Strygwyr - Smell and quick APIwrapper for interacting with the Dota 2 heroes.",
+  "main": "api.js",
   "typings": "./typings/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

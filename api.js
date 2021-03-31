@@ -1,6 +1,6 @@
 const { get } = require("http");
 const { URL, URLSearchParams } = require("url");
-const endpoints = require("./endpoints.json");
+const endpoints = require("./localized.json");
 
 function getContent(url) {
   return new Promise((resolve, reject) => {

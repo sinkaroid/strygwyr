@@ -1,67 +1,102 @@
-
-
 # Strygwyr
+
 [![npm](https://img.shields.io/npm/v/strygwyr.svg)](https://www.npmjs.com/package/strygwyr)
 [![npm](https://img.shields.io/npm/dt/strygwyr.svg?maxAge=3600)](https://www.npmjs.com/package/strygwyr)
-[![CodeFactor](https://www.codefactor.io/repository/github/sinkaroid/strygwyr/badge)](https://www.codefactor.io/repository/github/sinkaroid/strygwyr)  
+[![CodeFactor](https://www.codefactor.io/repository/github/sinkaroid/strygwyr/badge)](https://www.codefactor.io/repository/github/sinkaroid/strygwyr)
 
 Quick Dota 2 heroes wrapper.  
 maintainable according liquipedia.
 Mostly heroes but items and other things will added later.  
 this modules using latest `localized_name` implementation,  
 so if u type eg: `balanar`, `Outworld Devourer` and other aliases its will throw an error.
-thats why [typings](#Typings) will help you out!
-
+thats why [typings](#Typings) will help you out
 
 ## Typings
+
 typings file will help you and will be working to improve it.  
-This allows editors like VSC to use intellisense/autocomplete to suggest functions and help out with parameters and to see what you'll be receiving as a result of function calls. 
+This allows editors like VSC to use intellisense/autocomplete to suggest functions and help out with parameters and to see what you'll be receiving as a result of function calls.
 Some heroes name eg: Nature's Prophet and Anti-Mage are replaced with underscore. see our [methodTable](#method)
+
 ## Installation
 
 ```
 npm i strygwyr
 ```
 
---- 
+## Documentation
 
-## Herostats
-This will return latest Hero status
+#### stats(options)
+
+Returns latest hero status.
+
+```js
+dota.stats.Pudge().then((hero) => {
+  console.log(hero.data);
+});
+```
+
+#### talent(options)
+
+Returns latest hero talents.
+
+```js
+dota.talent.Phantom_Assassin().then((hero) => {
+  console.log(hero.data);
+});
+```
+
+#### changes(options)
+
+Latest changes according patch of heroes
+
+```js
+dota.talent.Phantom_Assassin().then((hero) => {
+  console.log(hero.data);
+});
+```
+
+---
+
+## Example
+
+## stats(options)
+
 ```js
 const wrapper = require("strygwyr");
-const gwyr = new wrapper();
+const dota = new wrapper();
 
-gwyr.stats.Phantom_Assassin().then((stry) => {
-  console.log(stry.data);
+dota.stats.Pudge().then((hero) => {
+  console.log(hero.data);
 });
-```  
+```
 
--------
-        Base HP Regen => 0.25
-        Base Mana Regen => 0
-        Sight Range => 1800 / 800
-        Attack Range => 150
-        Missile Speed => Instant
-        Attack Duration => 0.3 + 0.7
-        Cast Duration => 0.3 + 0.5
-        Base Attack Speed => 100
-        Base Attack Time => 1.7
-        Base Magic Resist => 25%
-        Turn Rate => 0.6
-  
+---
 
-## Herochanges
-This will return latest Hero changes
+      Base HP Regen => 2
+      Base Mana Regen => 0
+      Sight Range => 1800 / 800
+      Attack Range => 150
+      Missile Speed => Instant
+      Attack Duration => 0.5 + 1.17
+      Cast Duration => 0.3 + 0.51
+      Base Attack Speed => 100
+      Base Attack Time => 1.7
+      Base Magic Resist => 25%
+      Turn Rate => 0.7
+
+## changes(option)
+
 ```js
 const wrapper = require("strygwyr");
-const gwyr = new wrapper();
+const dota = new wrapper();
 
-gwyr.changes.Phantom_Assassin().then((stry) => {
-  console.log(stry.data);
+dota.changes.Phantom_Assassin().then((hero) => {
+  console.log(hero.data);
 });
-```  
+```
 
--------
+---
+
         7.27b
         -  Base damage increased by 3
         -  Blur scepter cooldown reduced from 12 to 10
@@ -69,39 +104,40 @@ gwyr.changes.Phantom_Assassin().then((stry) => {
         -  Level 15 Talent changed from +25% Cleave to +350 Phantom Strike Cast Range
         -  Level 20 Talent increased from +30% Blur Evasion to +35%
 
+## talent(options)
 
-## Herotalent
-This will return latest Hero talents
 ```js
 const wrapper = require("strygwyr");
-const gwyr = new wrapper();
+const dota = new wrapper();
 
-gwyr.talent.Phantom_Assassin().then((stry) => {
-  console.log(stry.data);
+dota.talent.Phantom_Assassin().then((hero) => {
+  console.log(hero.data);
 });
-```  
+```
 
-------
+---
 
     Triple Strike Stifling Dagger ❮➖ ( 25 ) ➖❯ +100% Coup de Grace Critical Damage
     +35% Blur Evasion ❮➖ ( 20 ) ➖❯ -3 Armor Corruption
     +350 Phantom Strike Cast Range ❮➖ ( 15 ) ➖❯ 12% Lifesteal
     -1s Stifling Dagger Cooldown ❮➖ ( 10 ) ➖❯ +175 Health
 
-
 ## Await/Async example
+
 ```js
 const wrapper = require("strygwyr");
-const gwyr = new wrapper();
+const dota = new wrapper();
 
-async function test() {
-  console.log(await gwyr.stats.Phantom_Assassin());
+async function hero() {
+  console.log(await dota.stats.Phantom_Assassin());
 }
 
-test();
+hero();
 ```
+
 ## Method
-| Method                  | Description |
+
+| Option                  | Description |
 | ----------------------- | ----------- |
 | `Anti_Mage()`           | Promise     |
 | `Axe()`                 | Promise     |
@@ -224,6 +260,20 @@ test();
 | `Snapfire()`            | Promise     |
 | `Mars()`                | Promise     |
 
-### further:
-- [Liquipedia DotA wiki](https://liquipedia.net/dota2/Main_Page)  
-- [The OpenDota Project](https://github.com/odota)
+## Todo
+
+- [x] Heroes
+- [x] Tournaments, use [traxex](https://www.npmjs.com/package/traxex)
+- [ ] Items
+
+## Legal
+
+This tool can be freely copied, modified, altered, distributed without any attribution whatsoever. However, if you feel like this tool deserves an attribution, mention it. It won't hurt anybody :)
+
+Please, read the [license terms](/LICENSE). Don't worry, it can be read in less than 30 seconds, unless you have some sort of reading disability - in that case, I'm wondering why you're still reading this text. Really. Stop. Please. I mean, seriously. Why are you still reading?
+
+## Notable
+
+Since this tool includes some contributions, and I'm not an asshole, I'll publically thank the following users for their help:
+
+- [@liquipedia/dota2](https://liquipedia.net/dota2/) as "milestone" and for actionable Data

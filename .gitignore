@@ -2,3 +2,5 @@ goblog/*
 .idea/* 
 test.js
 run.sh
+gh/
+rem
